@@ -1,6 +1,6 @@
 package creating_buildings;
 
-import java.util.ArrayList;
+
 
 public class Main {
 
@@ -30,10 +30,11 @@ public class Main {
         building.getRoom("Living room").deleteWindow();
 
         building.getRoom("Living room").addBulb(350);
+
         building.getRoom("Living room").deleteBulb(350);
 
-
         building.getRoom("Living room").deleteFurniture("Sofa");
+
 
 
         building.describe();

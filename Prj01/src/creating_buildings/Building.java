@@ -12,10 +12,6 @@ public class Building implements ValidAndDescribe{
         return numberOfRooms;
     }
 
-    public int getSizeOfAllRooms (){
-
-        return allRooms.size();
-    }
 
     public void addRoom(String nameOfRoom, int area, int numberOfWindows) throws Exception {
         if (checkingNameOfRoom(nameOfRoom)) {
@@ -66,7 +62,6 @@ public class Building implements ValidAndDescribe{
         for (Room room: allRooms) {
 
             if (room.isValid()) {
-                continue;
             } else{
                 return false;
 

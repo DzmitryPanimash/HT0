@@ -139,7 +139,6 @@ public class Room extends Building implements ValidAndDescribe{
                     if (bulb.getBulbIllumination() == bulbIllumination) {
                         this.illumination = this.illumination - bulb.getBulbIllumination();
                         this.numberOfBulb = this.numberOfBulb - 1;
-                        bulb = null;
                         bulbAndFurniture.remove(i);
                     }
                 }
@@ -161,8 +160,7 @@ public class Room extends Building implements ValidAndDescribe{
                     this.usefulSpace = this.usefulSpace + furniture.getMaxArea();
                     this.canGetSpace = this.canGetSpace - (furniture.getMaxArea() - furniture.getMinArea());
 
-                    furniture = null;
-                    bulbAndFurniture.remove(i);
+                bulbAndFurniture.remove(i);
 
             }
 
@@ -176,17 +174,21 @@ public class Room extends Building implements ValidAndDescribe{
     @Override
    public boolean isValid () throws Exception {
 
-        boolean valid = false;
+        boolean valid;
         if (this.illumination < 300) {
+            valid = false;
             throw new IlluminanceExceptions (this.nameOfRoom + ": this room has not enough illumination!");
+
         }else if (this.illumination > 4000) {
+            valid = false;
             throw new IlluminanceExceptions (this.nameOfRoom +": this room has too much illumination!");
-        }else {
-            valid = true;
-        }
+
+        }else valid = true;
 
         if(((double)this.usefulSpace / this.area) < 0.3){
+            valid = false;
             throw new SpaceUsageTooMuchException (this.nameOfRoom+ ": this room has too much furniture!");
+
         }
         return valid;
     }
